@@ -1,7 +1,7 @@
 import { Media, Tenant } from '@/payload-types'
 import { baseProcedure, createTRPCRouter, protectedProcedure } from '@/trpc/init'
 import { TRPCError } from '@trpc/server'
-import Stripe from 'stripe'
+import type Stripe from 'stripe'
 import { z } from 'zod'
 import { CheckoutMetadata, ProductMetadata } from '../types'
 import { stripe } from '@/lib/stripe'
@@ -95,7 +95,7 @@ export const checkoutRouter = createTRPCRouter({
       if (!checkout.url) {
         throw new TRPCError({
           code: 'INTERNAL_SERVER_ERROR',
-          message: 'Failed to create checkout session',
+          message: "Failed to create checkout session",
         })
       }
 
@@ -119,7 +119,7 @@ export const checkoutRouter = createTRPCRouter({
       })
 
       if (data.totalDocs !== input.ids.length) {
-        throw new TRPCError({ code: 'NOT_FOUND', message: 'Finner ikke produkter' })
+        throw new TRPCError({ code: 'NOT_FOUND', message: "Product not found" })
       }
 
       const totalPrice = data.docs.reduce((acc, product) => {

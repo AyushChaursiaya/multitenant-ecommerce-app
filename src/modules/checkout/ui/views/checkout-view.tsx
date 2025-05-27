@@ -15,6 +15,8 @@ import { useRouter } from 'next/navigation'
 interface CheckoutViewProps {
   tenantSlug: string
 }
+
+
 export const dynamic  = "force-dynamic";
 export const CheckoutView = ({ tenantSlug }: CheckoutViewProps) => {
   const router = useRouter()
@@ -56,12 +58,21 @@ export const CheckoutView = ({ tenantSlug }: CheckoutViewProps) => {
       router.push('/library')
     }
   }, [
-    router,
+    states.success,
     clearCart,
+    router,
     setStates,
     queryClient,
-    states.success,
-    trpc.library.getMany])
+    trpc.library.getMany
+  ]);
+
+  console.log('CheckoutView', {
+    productIds,
+    data,
+    error,
+    isLoading,
+  })
+  
 
   useEffect(() => {
     if (error?.data?.code === 'NOT_FOUND') {

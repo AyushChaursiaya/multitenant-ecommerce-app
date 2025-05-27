@@ -105,7 +105,7 @@ export const ReviewForm = ({ productId, initialData }: Props) => {
             <FormItem>
               <FormControl>
                 <Textarea
-                  placeholder="Want to leave awritten review?"
+                  placeholder="Want to leave a written review?"
                   disabled={isPreview}
                   {...field}
                 />

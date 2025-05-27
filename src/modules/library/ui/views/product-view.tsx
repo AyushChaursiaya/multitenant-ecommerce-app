@@ -54,7 +54,7 @@ export const ProductViewSkeleton = () => {
       <nav className="p-4 bg-[#F4F4F0] w-full items-center gap-2">
         <div className="flex items-center gap-2">
           <ArrowLeft className="size-4" />
-          <span className="text font-medium">Tilbake til biblioteket</span>
+          <span className="text font-medium">Back to Library</span>
         </div>
       </nav>
     </div>

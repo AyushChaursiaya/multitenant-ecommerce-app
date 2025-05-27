@@ -37,7 +37,7 @@ export const CheckoutSidebar = ({
           <div className="bg-red-100 border border-red-400 font-medium px-4 py-3 rounded flex items-center w-full">
             <div className="flex items-center">
               <CircleXIcon className="size-6 mr-2 fill-red-500 text-red-100" />
-              <span>Checkout feila. Prøv igjen</span>
+              <span>Checkout failed. Please try again.</span>
             </div>
           </div>
         </div>

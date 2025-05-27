@@ -15,7 +15,8 @@ export async function POST(req: Request) {
       process.env.STRIPE_WEBHOOK_SECRET as string,
     )
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error.'
+    const errorMessage = error instanceof Error ? error.message : "Unknown error"
+
     if (error! instanceof Error) {
       console.log(error)
     }
@@ -25,7 +26,7 @@ export async function POST(req: Request) {
 
   console.log('✅ Success:', event.id)
 
-  const permittedEvents: string[] = ['checkout.session.completed']
+  const permittedEvents: string[] = ["checkout.session.completed"]
 
   const payload = await getPayload({ config })
 
@@ -51,7 +52,7 @@ export async function POST(req: Request) {
           }
 
           const expandedSession = await stripe.checkout.sessions.retrieve(data.id, {
-            expand: ['line_items.data.price.product'],
+            expand: ["line_items.data.price.product"],
           })
 
           if (!expandedSession.line_items?.data || !expandedSession.line_items.data.length) {
@@ -76,7 +77,7 @@ export async function POST(req: Request) {
           throw new Error(`Unhandled event: ${event.type}`)
       }
     } catch (error) {
-      console.log(error)
+      console.log("Stripe ERRo ther", error)
       return NextResponse.json({ message: 'Webhook handler failed' }, { status: 500 })
     }
   }

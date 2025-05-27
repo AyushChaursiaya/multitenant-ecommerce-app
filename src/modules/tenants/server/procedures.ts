@@ -27,7 +27,7 @@ export const tenantsRouter = createTRPCRouter({
       const tenant = tenantsData.docs[0]
 
       if (!tenant) {
-        throw new TRPCError({ code: 'NOT_FOUND', message: 'Tenant inkje funne' })
+        throw new TRPCError({ code: 'NOT_FOUND', message: 'Tenant not found' })
       }
 
       return tenant as Tenant & { image: Media | null }
